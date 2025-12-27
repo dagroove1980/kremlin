@@ -2,7 +2,6 @@
   "version": 2,
   "buildCommand": "echo 'No build needed'",
   "outputDirectory": ".",
-  "public": true,
   "headers": [
     {
       "source": "/(.*)",
@@ -54,10 +53,9 @@
       ]
     }
   ],
-  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!api|og-image\\.png|.*\\.(png|jpg|jpeg|svg|ico|css|js|json|html|woff|woff2|ttf|eot|webp|gif|mp4|mp3|pdf|favicon)).*)",
+      "source": "/((?!api|.*\\.(png|jpg|jpeg|svg|ico|css|js|json|html|woff|woff2|ttf|eot|webp|gif|mp4|mp3|pdf|favicon)).*)",
       "destination": "/index.html"
     }
   ]
