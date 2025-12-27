@@ -1,6 +1,6 @@
 {
   "name": "kremlin-companion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AI-powered companion guide for Kremlin 3rd Edition board game",
   "scripts": {
     "dev": "python3 -m http.server 8000",
