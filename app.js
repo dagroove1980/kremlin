@@ -204,11 +204,6 @@ function formatMessage(text) {
 }
 
 async function getAIResponse(userMessage) {
-    // Check for API key - try multiple sources
-    const apiKey = OPENAI_API_KEY || (typeof window !== 'undefined' && window.OPENAI_API_KEY) || '';
-    if (!apiKey) {
-        return 'OpenAI API key is not configured. Please set OPENAI_API_KEY environment variable or configure it in Vercel settings.';
-    }
     // Create system prompt with game rules context
     const systemPrompt = `You are an expert assistant for the board game "Kremlin" (3rd Edition). You have complete knowledge of the game rules and can provide precise answers with specific rule references.
 
@@ -242,29 +237,24 @@ Answer the user's question about Kremlin rules, strategy, or gameplay:`;
     ];
     
     try {
-        const response = await fetch(OPENAI_API_URL, {
+        // Use Vercel serverless function instead of direct API call
+        const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                model: 'gpt-4',
-                messages: messages,
-                temperature: 0.7,
-                max_tokens: 1000
-            })
+            body: JSON.stringify({ messages })
         });
         
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.error?.message || 'API request failed');
+            throw new Error(errorData.error || 'API request failed');
         }
         
         const data = await response.json();
         return data.choices[0].message.content;
     } catch (error) {
-        console.error('OpenAI API Error:', error);
+        console.error('API Error:', error);
         throw error;
     }
 }
