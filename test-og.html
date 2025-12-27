@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OG Tag Tester</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Open Graph Meta Tags Checker</h1>
+    <p>Use these tools to verify your OG tags:</p>
+    
+    <h2>Facebook/WhatsApp Debugger</h2>
+    <p><a href="https://developers.facebook.com/tools/debug/?q=https://kremlin-companion.vercel.app/" target="_blank">Facebook Sharing Debugger</a></p>
+    
+    <h2>Twitter Card Validator</h2>
+    <p><a href="https://cards-dev.twitter.com/validator" target="_blank">Twitter Card Validator</a></p>
+    
+    <h2>LinkedIn Post Inspector</h2>
+    <p><a href="https://www.linkedin.com/post-inspector/inspect/https://kremlin-companion.vercel.app/" target="_blank">LinkedIn Post Inspector</a></p>
+    
+    <h2>Current OG Tags:</h2>
+    <pre id="og-tags"></pre>
+    
+    <script>
+        fetch('https://kremlin-companion.vercel.app/')
+            .then(r => r.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const ogTags = Array.from(doc.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]'));
+                const tagsList = ogTags.map(tag => {
+                    const prop = tag.getAttribute('property') || tag.getAttribute('name');
+                    const content = tag.getAttribute('content');
+                    return `${prop}: ${content}`;
+                }).join('\n');
+                document.getElementById('og-tags').textContent = tagsList || 'No OG tags found';
+            });
+    </script>
+</body>
+</html>
+
