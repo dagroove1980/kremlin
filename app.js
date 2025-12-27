@@ -1,6 +1,7 @@
 // OpenAI API Configuration
 // Note: Set OPENAI_API_KEY environment variable or use Vercel environment variables
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || window.OPENAI_API_KEY || '';
+// For client-side: Use window.OPENAI_API_KEY or set via Vercel environment variables
+const OPENAI_API_KEY = (typeof window !== 'undefined' && window.OPENAI_API_KEY) || '';
 const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
 
 // DOM Elements
@@ -205,7 +206,9 @@ function formatMessage(text) {
 }
 
 async function getAIResponse(userMessage) {
-    if (!OPENAI_API_KEY) {
+    // Check for API key - try multiple sources
+    const apiKey = OPENAI_API_KEY || (typeof window !== 'undefined' && window.OPENAI_API_KEY) || '';
+    if (!apiKey) {
         return 'OpenAI API key is not configured. Please set OPENAI_API_KEY environment variable or configure it in Vercel settings.';
     }
     // Create system prompt with game rules context
@@ -245,7 +248,7 @@ Answer the user's question about Kremlin rules, strategy, or gameplay:`;
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
+                'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
                 model: 'gpt-4',
