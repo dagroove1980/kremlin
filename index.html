@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete companion guide for Kremlin 3rd Edition board game with AI-powered rule assistance and strategy tips">
+    <title>Kremlin Companion - Rules & Strategy Guide</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kremlin-companion.vercel.app/">
+    <meta property="og:title" content="KREMLIN - Davide online companion">
+    <meta property="og:description" content="The Online Companion for Kremlin 3rd Edition - Rules, strategies, and AI-powered assistance">
+    <meta property="og:image" content="https://kremlin-companion.vercel.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="KREMLIN - Davide online companion">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kremlin-companion.vercel.app/">
+    <meta name="twitter:title" content="KREMLIN - Davide online companion">
+    <meta name="twitter:description" content="The Online Companion for Kremlin 3rd Edition - Rules, strategies, and AI-powered assistance">
+    <meta name="twitter:image" content="https://kremlin-companion.vercel.app/og-image.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="logo">КРЕМЛЬ</h1>
+                    <p class="subtitle">Davide online companion</p>
+                </div>
+                <nav class="nav-tabs">
+                    <button class="nav-tab active" data-tab="rules">Rules</button>
+                    <button class="nav-tab" data-tab="chat">AI Companion</button>
+                    <button class="nav-tab" data-tab="tips">Strategy Tips</button>
+                </nav>
+                <div class="navbar-figures">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/GorbachevMS.jpg/250px-GorbachevMS.jpg" alt="Gorbachev" class="navbar-figure">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnQKGzvamlWrExgeCrXtKhq40VIXEiWUiVSg&s" alt="Stalin" class="navbar-figure">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5e0185311e0373308494e5b6/1578546489298-J7IT0UGO137OBS32O82P/putin.jpg?format=1500w" alt="Putin" class="navbar-figure">
+                    <img src="https://www.historytoday.com/sites/default/files/Lenin_CL.jpg" alt="Lenin" class="navbar-figure">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Rules Tab -->
+            <div id="rules-tab" class="tab-content active">
+                <div class="search-section">
+                    <div class="search-box">
+                        <input type="text" id="rules-search" placeholder="Search rules, phases, actions..." class="search-input">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="search-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="setup">Setup</button>
+                        <button class="filter-btn" data-filter="phases">Phases</button>
+                        <button class="filter-btn" data-filter="actions">Actions</button>
+                        <button class="filter-btn" data-filter="winning">Winning</button>
+                    </div>
+                </div>
+
+                <div class="rules-container">
+                    <div class="rules-sidebar">
+                        <h3>Quick Navigation</h3>
+                        <ul class="nav-list">
+                            <li><a href="#setup" class="nav-link">Setup</a></li>
+                            <li><a href="#secret-influence" class="nav-link">Secret Influence</a></li>
+                            <li><a href="#declaring-influence" class="nav-link">Declaring Influence</a></li>
+                            <li><a href="#course-of-year" class="nav-link">Course of the Year</a></li>
+                            <li><a href="#phase-1" class="nav-link">Phase 1: Ageing</a></li>
+                            <li><a href="#phase-2" class="nav-link">Phase 2: Curing</a></li>
+                            <li><a href="#phase-3" class="nav-link">Phase 3: Purges</a></li>
+                            <li><a href="#phase-4" class="nav-link">Phase 4: Promotions</a></li>
+                            <li><a href="#phase-5" class="nav-link">Phase 5: Foreign Minister</a></li>
+                            <li><a href="#phase-6" class="nav-link">Phase 6: Elections</a></li>
+                            <li><a href="#phase-7" class="nav-link">Phase 7: Volk</a></li>
+                            <li><a href="#phase-8" class="nav-link">Phase 8: Winning</a></li>
+                            <li><a href="#tables" class="nav-link">Reference Tables</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-content" id="rules-content">
+                        <!-- Rules will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Tab -->
+            <div id="chat-tab" class="tab-content">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2>AI Game Companion</h2>
+                        <p>Ask me anything about Kremlin rules, strategies, or gameplay</p>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnQKGzvamlWrExgeCrXtKhq40VIXEiWUiVSg&s" alt="AI Companion" class="avatar-image">
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your Kremlin game companion. I can help you understand the rules, clarify gameplay mechanics, and provide strategic advice. What would you like to know?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chat-input" placeholder="Ask about rules, strategies, or gameplay..." class="chat-input">
+                        <button id="send-btn" class="send-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Tab -->
+            <div id="tips-tab" class="tab-content">
+                <div class="tips-container">
+                    <h2>Strategy Tips & Tactics</h2>
+                    <div class="tips-grid" id="tips-grid">
+                        <!-- Tips will be dynamically loaded -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Kremlin Companion - Unofficial Guide for Kremlin 3rd Edition</p>
+            <p>Based on the original Swiss rules by Fata Morgana Spiele</p>
+        </footer>
+    </div>
+
+    <script src="rules-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
