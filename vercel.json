@@ -55,8 +55,8 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!api|.*\\.(png|jpg|jpeg|svg|ico|css|js|json|html|woff|woff2|ttf|eot|webp|gif|mp4|mp3|pdf|favicon)).*)",
-      "destination": "/index.html"
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
     }
   ]
 }
