@@ -1,8 +1,6 @@
 // OpenAI API Configuration
-// Note: Set OPENAI_API_KEY environment variable or use Vercel environment variables
-// For client-side: Use window.OPENAI_API_KEY or set via Vercel environment variables
-const OPENAI_API_KEY = (typeof window !== 'undefined' && window.OPENAI_API_KEY) || '';
-const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
+// API calls are now proxied through /api/chat serverless function
+// This keeps the API key secure on the server side
 
 // DOM Elements
 const navTabs = document.querySelectorAll('.nav-tab');
