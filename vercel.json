@@ -53,6 +53,11 @@
       ]
     }
   ],
-  "rewrites": []
+  "rewrites": [
+    {
+      "source": "/((?!api|.*\\.(png|jpg|jpeg|svg|ico|css|js|json|html|woff|woff2|ttf|eot|webp)).*)",
+      "destination": "/index.html"
+    }
+  ]
 }
 
