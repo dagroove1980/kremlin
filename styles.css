@@ -93,6 +93,14 @@ body {
     letter-spacing: 0.05em;
 }
 
+.version {
+    font-size: 0.7rem;
+    color: var(--color-gray);
+    margin-top: 0.25rem;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+}
+
 .nav-tabs {
     display: flex;
     gap: 0.5rem;
